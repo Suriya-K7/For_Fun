@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Trapping Water Demo</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+      #blocks {
+        display: flex;
+        gap: 4px;
+      }
+      .block {
+        display: inline-block;
+        width: 20px;
+        background: lightgray;
+        text-align: center;
+        position: relative;
+      }
+      .water {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #00bfff;
+      }
+      .column-height {
+        background-color: #f1c40f;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Trapping Water Demo</h1>
+
+    <p>Enter block heights (comma-separated):</p>
+    <input
+      type="text"
+      id="inputHeights"
+      value="0,4,0,0,0,6,0,6,4,0"
+      size="40"
+    />
+    <button onclick="renderSolution()">Compute</button>
+    <br />
+    <br />
+    <br />
+    <div id="blocks"></div>
+    <br />
+    <br />
+    <div id="result"></div>
+
+    <script>
+      function computeTrappedWater(heights) {
+        const n = heights.length;
+        if (n === 0) return 0;
+
+        const leftMax = new Array(n);
+        const rightMax = new Array(n);
+
+        leftMax[0] = heights[0];
+        for (let i = 1; i < n; i++) {
+          leftMax[i] = Math.max(leftMax[i - 1], heights[i]);
+        }
+
+        rightMax[n - 1] = heights[n - 1];
+        for (let i = n - 2; i >= 0; i--) {
+          rightMax[i] = Math.max(rightMax[i + 1], heights[i]);
+        }
+
+        let total = 0;
+        for (let i = 0; i < n; i++) {
+          const waterHere = Math.min(leftMax[i], rightMax[i]) - heights[i];
+          if (waterHere > 0) {
+            total += waterHere;
+          }
+        }
+        return total;
+      }
+
+      function renderSolution() {
+        const input = document.getElementById("inputHeights").value;
+        const heights = input
+          .split(",")
+          .map((x) => parseInt(x.trim(), 10))
+          .filter((x) => !isNaN(x));
+
+        const totalWater = computeTrappedWater(heights);
+
+        document.getElementById(
+          "result"
+        ).textContent = `Total trapped water: ${totalWater} units`;
+
+        const blocksDiv = document.getElementById("blocks");
+        blocksDiv.innerHTML = "";
+
+        const maxHeight = Math.max(...heights, 0);
+
+        for (let i = 0; i < heights.length; i++) {
+          const blockDiv = document.createElement("div");
+          blockDiv.className = "block";
+          blockDiv.style.height = maxHeight * 10 + "px";
+
+          const columnDiv = document.createElement("div");
+          columnDiv.className = "column-height";
+          columnDiv.style.height = heights[i] * 10 + "px";
+          blockDiv.appendChild(columnDiv);
+
+          const leftM = Math.max(...heights.slice(0, i + 1));
+          const rightM = Math.max(...heights.slice(i));
+          const waterHeight = Math.min(leftM, rightM) - heights[i];
+          if (waterHeight > 0) {
+            const waterDiv = document.createElement("div");
+            waterDiv.className = "water";
+            waterDiv.style.height = waterHeight * 10 + "px";
+            waterDiv.style.bottom = heights[i] * 10 + "px";
+            blockDiv.appendChild(waterDiv);
+          }
+
+          blocksDiv.appendChild(blockDiv);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderSolution();
+      });
+    </script>
+  </body>
+</html>

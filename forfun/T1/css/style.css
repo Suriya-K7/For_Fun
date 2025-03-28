@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+h5 {
+  font-weight: 300;
+}
+h1 {
+  font-weight: 500;
+}
+p {
+  font-weight: 200;
+}
+section {
+  min-height: 100vh;
+}
+section#home {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  gap: 20px;
+}
+.home-banner {
+  width: 60%;
+  background-color: red;
+  min-height: 100vh;
+  background: url("../assets/sectionOneBanner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: end;
+}
+.home-banner-content {
+  height: 50vh;
+  background-color: rgba(43, 2, 125, 0.842);
+  color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: start;
+}
+.home-banner-content button {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  gap: 20px;
+  cursor: pointer;
+}
+.home-banner-content h1 {
+  font-size: 40px;
+}
+.home-banner-content h5 {
+  font-weight: 300;
+}
+.home-card-container {
+  min-height: 100vh;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px 20px 20px 0;
+}
+.home-card {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  height: fit-content;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+}
+.home-card img {
+  width: 100%;
+}
+.card-image img {
+  object-fit: cover;
+  width: 100%;
+}
+.card-body {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e1a47;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding: 10px 16px;
+}
+
+.card-footer-menu {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: #777;
+  gap: 6px;
+}
+
+.card-footer-menu span {
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #4c2c91;
+}
+
+#data {
+  background: url(../assets/sectionTwoBanner.jpg) no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: end;
+  padding: 20px;
+}
+.data-container {
+  padding: 20px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.data-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.data-card:hover {
+  background-color: rgba(128, 128, 128, 0.236);
+  cursor: pointer;
+}
+.data-card-title {
+  color: white;
+  font-family: "IBM Plex Mono", "Roboto Mono", "Source Code Pro", monospace;
+  font-weight: bold;
+}
+.data-card-description {
+  color: gray;
+  line-height: 32px;
+}
+#people {
+  background-color: #eee;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  padding: 32px 16px;
+  gap: 32px;
+}
+.people-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.people-card {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  gap: 32px;
+}
+.people-card:hover {
+  scale: 1.1;
+  cursor: pointer;
+}
+.people-card:hover img {
+  filter: brightness(1.2) contrast(1.3) saturate(1.5);
+}
+
+.people-img {
+  width: 300px;
+}
+
+.people-img img {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.4));
+}
+.people-detail {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  gap: 8px;
+}
+.people-name {
+  font-size: 32px;
+  font-weight: 600;
+}
+.logo {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  gap: 16px;
+  color: #666;
+}
+#food {
+  background: url(../assets/sectionFoodBanner.jpg) no-repeat center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.food-container {
+  min-height: 100vh;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 350px 350px;
+  gap: 60px;
+  place-content: space-between;
+}
+.food-card {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  gap: 16px;
+  flex-direction: column;
+}
+.food-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  font-size: 32px;
+  color: rgb(132, 0, 255);
+  display: grid;
+  place-content: center;
+  background-color: rgba(255, 255, 0, 0.549);
+}
+.food-datails {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+.food-title {
+  color: #4c2c91;
+}
+.food-details {
+  font-size: small;
+}
+@media screen and (max-width: 992px) {
+  section#home {
+    flex-direction: column;
+  }
+  .home-banner {
+    width: 100%;
+  }
+  .home-card {
+    max-width: 300px;
+  }
+  .home-card-container {
+    grid-template-columns: repeat(2, 300px);
+    grid-template-rows: auto;
+  }
+  .card-description {
+    padding: 16px;
+  }
+
+  .data-card-description {
+    line-height: normal;
+  }
+  .data-container {
+    padding: auto;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .data-card {
+    padding: 20px;
+  }
+  #data {
+    align-items: start;
+    padding: 10px;
+  }
+  .food-container {
+    grid-template-columns: 300px 300px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-banner-content {
+    padding: 40px;
+    gap: 32px;
+  }
+  .home-banner-content h1 {
+    font-size: 36px;
+  }
+  .home-card-container {
+    padding: 0;
+  }
+  .data-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .food-container {
+    grid-template-columns: 1fr;
+  }
+  .food-card {
+    background-color: #eeeeee87;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home-banner-content {
+    padding: 20px;
+    gap: 32px;
+  }
+  .home-banner-content h1 {
+    font-size: 28px;
+  }
+  .home-banner-content h5 {
+    font-size: 20px;
+  }
+  .home-card-container {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+    place-items: center;
+  }
+  .home-card {
+    max-width: 95%;
+    width: 100%;
+  }
+}
