@@ -44,9 +44,24 @@ function maxProfitSchedule(n) {
 
   backtrack(n, { T: 0, P: 0, C: 0 });
 
+  // Keep only solutions with minimal total project count
   const unique = {};
-  for (const m of mixes) unique[`${m.T}-${m.P}-${m.C}`] = m;
-  const solutions = Object.values(unique);
+  let minProjects = Infinity;
+
+  for (const m of mixes) {
+    const totalProjects = m.T + m.P + m.C;
+    const key = `${m.T}-${m.P}-${m.C}`;
+    if (totalProjects <= minProjects) {
+      unique[key] = m;
+      if (totalProjects < minProjects) {
+        minProjects = totalProjects;
+      }
+    }
+  }
+
+  const solutions = Object.values(unique).filter(
+    (m) => m.T + m.P + m.C === minProjects
+  );
 
   return {
     n,
@@ -56,4 +71,11 @@ function maxProfitSchedule(n) {
   };
 }
 
-[7, 8, 13, 49].forEach((n) => console.log(maxProfitSchedule(n)));
+// Test cases
+[7, 8, 13, 49].forEach((n) => {
+  const result = maxProfitSchedule(n);
+  console.log(`\n--- n = ${n} ---`);
+  console.log("Max Profit:", result.maxProfit);
+  console.log("Solutions:", result.solutions);
+  console.log("Summaries:", result.summaries);
+});
